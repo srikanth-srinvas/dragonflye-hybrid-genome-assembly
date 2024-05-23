@@ -5,11 +5,8 @@ This repository contains a Nextflow pipeline to run Dragonflye for genome assemb
 ## Requirements
 
 To run this pipeline, you need the following installed on your system:
+- [Docker](https://www.docker.com/)
 - [Nextflow](https://www.nextflow.io/)
-- [Conda](https://docs.conda.io/en/latest/)
-- [Dragonflye](https://github.com/rpetit3/dragonflye) (Ensure you have installed Dragonflye and activated the conda environment before running the pipeline)
-- [BWA](http://bio-bwa.sourceforge.net/)
-- [Samtools](http://www.htslib.org/)
 
 ## Inputs
 
@@ -19,7 +16,9 @@ The pipeline requires the following inputs:
 - A text file with sample IDs (e.g., `--sample_ids /path/to/sample_ids.txt`)
 - An output folder name (e.g., `--output_folder /path/to/output_folder`)
 
-## Running the Pipeline
+## Building the Docker Image
+
+Before running the pipeline, you need to build the Docker image:
 
 1. Clone this repository:
     ```bash
@@ -27,11 +26,32 @@ The pipeline requires the following inputs:
     cd dragonflye_nextflow_pipeline
     ```
 
-2. Edit the `main.nf` file if you need to change any default parameters like CPUs, RAM, genome size, etc.
-
-3. Run the pipeline using Nextflow:
+2. Build the Docker image:
     ```bash
-    nextflow run main.nf --nanopore_reads_dir /path/to/nanopore_reads --illumina_reads_dir /path/to/illumina_reads --sample_ids /path/to/sample_ids.txt --output_folder /path/to/output_folder
+    docker build -t dragonflye-assembly-pipeline .
+    ```
+
+## Running the Pipeline with Docker
+
+1. Run the Docker container with Nextflow pipeline:
+    ```bash
+    docker run -v /path/to/data:/workspace/data \
+      dragonflye-assembly-pipeline \
+      --illumina_reads_dir /workspace/data/illumina_reads \
+      --nanopore_reads_dir /workspace/data/nanopore_reads \
+      --sample_ids /workspace/data/sample_ids.txt \
+      --output_folder /workspace/data/output
+    ```
+
+2. Example command to customize default parameters:
+    ```bash
+    docker run -v /path/to/data:/workspace/data \
+      dragonflye-assembly-pipeline \
+      --illumina_reads_dir /workspace/data/illumina_reads \
+      --nanopore_reads_dir /workspace/data/nanopore_reads \
+      --sample_ids /workspace/data/sample_ids.txt \
+      --output_folder /workspace/data/output \
+      --cpus 16 --ram 64 --gsize '6M'
     ```
 
 ## Default Parameters
@@ -50,7 +70,9 @@ The default parameters used in the pipeline are:
 
 If you need to change any default parameters, you can do so by editing the `main.nf` file directly or by passing them as command-line arguments when running the pipeline.
 
-## Example Command
+## Example Command with Nextflow
+
+If you prefer to run the pipeline using Nextflow directly (without Docker), use the following command:
 
 ```bash
 nextflow run main.nf --nanopore_reads_dir /path/to/nanopore_reads --illumina_reads_dir /path/to/illumina_reads --sample_ids /path/to/sample_ids.txt --output_folder /path/to/output_folder --cpus 16 --ram 64 --gsize '6M'
