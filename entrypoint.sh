@@ -7,4 +7,4 @@ if ! command -v nextflow &>/dev/null; then
 fi
 
 # Run the Nextflow pipeline with the provided arguments
-nextflow run mapping.nf -profile docker "$@"
+nextflow run main.nf -profile docker "$@"
