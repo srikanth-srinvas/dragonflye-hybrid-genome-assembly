@@ -16,6 +16,9 @@ params.Pilon_steps = 0
 
 process runDragonflye {
 
+    // Use Docker profile for this process
+    container 'dragonflye-assembly-pipeline'
+
     input:
     val id
     path nanopore_fastq
