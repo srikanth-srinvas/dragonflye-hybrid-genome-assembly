@@ -76,3 +76,7 @@ If you prefer to run the pipeline using Nextflow directly (without Docker), use 
 
 ```bash
 nextflow run main.nf --nanopore_reads_dir /path/to/nanopore_reads --illumina_reads_dir /path/to/illumina_reads --sample_ids /path/to/sample_ids.txt --output_folder /path/to/output_folder --cpus 16 --ram 64 --gsize '6M'
+
+
+## Credits 
+This pipeline is based on the original Dragonflye pipeline developed by Robert A Petit III (https://github.com/rpetit3/dragonflye/)
