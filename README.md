@@ -1,5 +1,8 @@
 # Dragonflye Nextflow Pipeline
 
+![Dragonflye Nextflow Pipeline](https://www.google.com/url?sa=i&url=https%3A%2F%2Fgithub.com%2Fnf-corepsig=AOvVaw33KDGNJPbcTbrn64V2tfnM&ust=1716623482200000&source=images&cd=vfe&opi=89978449ved=0CBIQjRxqFwoTCJiYp_jmpYYDFQAAAAAdAAAAABAE)
+
+
 This repository contains a Nextflow pipeline to run Dragonflye for Hybrid-genome assembly using Nanopore and Illumina reads.
 
 ## Requirements
