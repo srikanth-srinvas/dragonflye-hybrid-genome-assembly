@@ -60,4 +60,4 @@ nextflow run workflows/main.nf --nanopore_reads_dir /path/to/nanopore_reads --il
 ```
 
 ## Credits 
-This pipeline extends the Dragonflye pipeline by Robert A. Petit III and leverages best practices from the nf-core framework. (https://github.com/rpetit3/dragonflye/) (https://nf-co.re/)
+This pipeline extends the Dragonflye pipeline by [Robert A. Petit III](https://github.com/rpetit3/dragonflye/) and leverages best practices from the [nf-core framework](https://nf-co.re/).
