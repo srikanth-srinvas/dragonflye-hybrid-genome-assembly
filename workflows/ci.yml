@@ -1,0 +1,13 @@
+
+### Continuous Integration
+
+#### `.github/workflows/ci.yml`
+Create a CI workflow to automate testing:
+```yaml
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+ 
