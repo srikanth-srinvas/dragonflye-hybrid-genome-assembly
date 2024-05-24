@@ -1,20 +1,13 @@
-# Use an official Python runtime as a parent image
 FROM continuumio/miniconda3
 
-# Set the working directory
 WORKDIR /workspace
 
-# Install Nextflow
-RUN conda install -c bioconda nextflow
+COPY environment.yml /workspace/
+RUN conda env create -f environment.yml
 
-# Install Dragonflye and other dependencies
-RUN conda install -c bioconda dragonflye bwa samtools
+COPY entrypoint.sh /workspace/
+RUN chmod +x /workspace/entrypoint.sh
 
-# Copy the Nextflow pipeline script and the entrypoint script into the container
-COPY . .
+COPY . /workspace/
 
-# Make the entrypoint script executable
-RUN chmod +x entrypoint.sh
-
-# Set the entrypoint script as the container's entry point
 ENTRYPOINT ["/workspace/entrypoint.sh"]
