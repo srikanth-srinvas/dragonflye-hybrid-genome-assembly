@@ -1,7 +1,5 @@
 # Dragonflye Nextflow Pipeline
 
-![alt text](image.png)
-
 This repository contains a Nextflow pipeline to run Dragonflye for genome assembly using Nanopore and Illumina reads. The pipeline is built following the nf-core framework standards and Dockerized for reproducibility and ease of use.
 
 ## Requirements
